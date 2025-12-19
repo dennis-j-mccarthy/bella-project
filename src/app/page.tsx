@@ -1,65 +1,525 @@
-import Image from "next/image";
+'use client';
+
+import Link from 'next/link';
+import Header from '@/components/Header';
 
 export default function Home() {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <div className="min-h-screen bg-slate-50 text-slate-900">
+      <Header currentPage="home" />
+
+      <main className="bg-slate-50 text-slate-900">
+        {/* Hero Row */}
+        <section className="border-b border-slate-200 bg-white">
+          <div className="sm:px-6 lg:px-8 max-w-6xl mx-auto py-12 px-4">
+            <div className="grid gap-10 lg:gap-12">
+              {/* Hero Text + Video */}
+              <div className="grid lg:grid-cols-5 gap-8 items-start">
+                <div className="lg:col-span-2">
+                  <p className="text-[11px] uppercase font-medium text-[#5b7a99] tracking-[0.22em]">
+                    NEW CONSTRUCTION, UNDER 2,500
+                  </p>
+                  <h1 className="sm:text-4xl lg:text-5xl text-3xl font-light text-slate-900 tracking-normal font-playfair mt-3">
+                    New Luxury Apartments in Downtown Bonita Springs
+                  </h1>
+                  <p className="text-sm text-slate-600 max-w-md mt-4">
+                    Luxury apartments, new construction, prime sought-after location, under $2,500
+                    with no price "gotchas". Inspired by the latest design and construction trends,
+                    at Bella, every detail has been thoughtfully crafted to elevate your everyday
+                    experience.
+                  </p>
+                </div>
+
+                <div className="lg:col-span-3">
+                  {/* Hero Video Placeholder */}
+                  <div className="relative aspect-video rounded-3xl border border-slate-200 bg-slate-100 overflow-hidden">
+                    <img
+                      src="/images/bella-hero.png"
+                      alt="Bella Apartments hero"
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-slate-900/15 via-slate-900/5 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                      <div>
+                        <p className="text-[11px] font-medium tracking-[0.22em] uppercase text-slate-50 drop-shadow-sm">
+                          Bella Walkthrough
+                        </p>
+                        <p className="text-xs text-slate-100 drop-shadow-sm">
+                          A glimpse into everyday life at Bella Apartments.
+                        </p>
+                      </div>
+                      <button className="inline-flex items-center gap-2 rounded-full bg-white/90 border border-white px-3 py-1.5 text-[11px] font-medium tracking-[0.18em] uppercase text-slate-900 backdrop-blur-sm hover:bg-white">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 24 24"
+                          strokeWidth="1.5"
+                          stroke="currentColor"
+                          fill="none"
+                        >
+                          <polygon points="9 7 17 12 9 17 9 7" fill="currentColor" />
+                        </svg>
+                        Play Tour
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Two-column short text with CTA */}
+              <div className="grid md:grid-cols-2 gap-10 pt-2 border-t border-slate-200 mt-6">
+                <div className="space-y-3">
+                  <h2 className="text-lg font-semibold text-slate-900 tracking-tight">
+                    Welcome to your New home in Bonita Springs
+                  </h2>
+                  <p className="text-sm text-slate-600 max-w-md">
+                    Right in the heart of one of Southwest Florida's most walkable, authentic
+                    downtown—Bella isn't just where you live, it's where life gets better.
+                  </p>
+                </div>
+                <div className="space-y-4">
+                  <p className="text-sm font-black text-slate-600 max-w-md">
+                    To see it is to love it. The best way to experience Bella's boutique apartments
+                    feel is in person.
+                  </p>
+                  <div className="flex flex-wrap items-center gap-3">
+                    <button className="inline-flex items-center justify-center rounded-full bg-[#5b7a99] text-white px-4 py-2 text-[11px] font-medium tracking-[0.2em] uppercase hover:bg-[#4a6580]">
+                      Schedule a Tour
+                    </button>
+                    <button className="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-[11px] font-medium tracking-[0.2em] uppercase text-slate-700 hover:border-[#5b7a99] hover:text-[#5b7a99] bg-white">
+                      View Availability
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Apartments Row */}
+        <section className="border-b border-slate-200 bg-slate-50">
+          <div className="sm:px-6 lg:px-8 max-w-6xl mx-auto py-14 px-4">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-8">
+              <div>
+                <p className="text-[11px] uppercase font-medium text-[#5b7a99] tracking-[0.22em]">
+                  RESIDENCES
+                </p>
+                <h2 className="sm:text-3xl text-2xl font-light text-slate-900 font-playfair mt-2">
+                  Apartments designed for how you actually live.
+                </h2>
+                <p className="text-sm text-slate-600 max-w-xl mt-3">
+                  True luxury lives in the details most apartments overlook. We obsess over the
+                  quiet moments—the soft-close cabinets, the whisper-quiet dishwasher during dinner.
+                  Premium hardware, thoughtfully insulated walls, and whisper-quiet cooling systems
+                  work in harmony to create a serene sanctuary where every detail elevates your
+                  daily life. Because the difference between ordinary and luxury lies in the little
+                  things.
+                </p>
+              </div>
+              <div>
+                <button className="inline-flex items-center justify-center rounded-full bg-slate-900 text-white px-4 py-2 text-[11px] font-medium tracking-[0.2em] uppercase hover:bg-slate-800">
+                  View Floorplans
+                </button>
+              </div>
+            </div>
+
+            {/* Carousel */}
+            <div className="space-y-4">
+              <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white">
+                <div className="flex gap-4 overflow-x-auto snap-x snap-mandatory p-3">
+                  {/* Slide 1 */}
+                  <div className="min-w-[260px] sm:min-w-[320px] md:min-w-[360px] snap-start rounded-2xl overflow-hidden border border-slate-200 bg-white">
+                    <div className="h-56 bg-slate-100">
+                      <img
+                        src="/images/the-bella-downtown-bonita-springs-fl-2br-2ba---kitchen.png"
+                        alt="Two bedroom kitchen at Bella Apartments"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <p className="text-xs font-medium tracking-[0.16em] uppercase text-slate-500">
+                        One Bedroom
+                      </p>
+                      <h3 className="mt-1 text-sm font-semibold tracking-tight text-slate-900 font-playfair">
+                        1 Bed · 1 Bath · Balcony
+                      </h3>
+                      <p className="mt-2 text-xs text-slate-600">
+                        Open-concept living with south-facing windows and a private outdoor retreat.
+                      </p>
+                    </div>
+                  </div>
+                  {/* Slide 2 */}
+                  <div className="min-w-[260px] sm:min-w-[320px] md:min-w-[360px] snap-start rounded-2xl overflow-hidden border border-slate-200 bg-white">
+                    <div className="h-56 bg-slate-100">
+                      <img
+                        src="/images/the-bella-downtown-bonita-springs-fl-second-bathroom.jpg"
+                        alt="Bathroom at Bella Apartments"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <p className="text-xs font-medium tracking-[0.16em] uppercase text-slate-500">
+                        Two Bedroom
+                      </p>
+                      <h3 className="mt-1 text-sm font-semibold tracking-tight text-slate-900 font-playfair">
+                        Corner 2 Bed · 2 Bath
+                      </h3>
+                      <p className="mt-2 text-xs text-slate-600">
+                        Wraparound windows, split bedrooms, and an entertainer's kitchen.
+                      </p>
+                    </div>
+                  </div>
+                  {/* Slide 3 */}
+                  <div className="min-w-[260px] sm:min-w-[320px] md:min-w-[360px] snap-start rounded-2xl overflow-hidden border border-slate-200 bg-white">
+                    <div className="h-56 bg-slate-100">
+                      <img
+                        src="/images/the-bella-downtown-bonita-springs-fl-primary-bedroom.jpg"
+                        alt="Primary bedroom at Bella Apartments"
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div className="p-4">
+                      <p className="text-xs font-medium tracking-[0.16em] uppercase text-slate-500">
+                        Penthouse
+                      </p>
+                      <h3 className="mt-1 text-sm font-semibold tracking-tight text-slate-900 font-playfair">
+                        3 Bed · 2.5 Bath · Terrace
+                      </h3>
+                      <p className="mt-2 text-xs text-slate-600">
+                        Elevated ceilings, expansive terrace, and sweeping Bonita Springs views.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                {/* Carousel controls */}
+                <div className="absolute inset-x-0 bottom-0 flex items-center justify-between px-4 pb-3 pt-2 bg-gradient-to-t from-slate-900/5 to-transparent">
+                  <div className="flex items-center gap-1.5">
+                    <span className="h-1.5 w-5 rounded-full bg-slate-900" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-slate-400" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-slate-400" />
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <button className="h-7 w-7 rounded-full border border-slate-300 flex items-center justify-center text-slate-700 hover:border-slate-400 bg-white">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        fill="none"
+                      >
+                        <polyline points="15 6 9 12 15 18" />
+                      </svg>
+                    </button>
+                    <button className="h-7 w-7 rounded-full border border-slate-300 flex items-center justify-center text-slate-700 hover:border-slate-400 bg-white">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        strokeWidth="1.5"
+                        stroke="currentColor"
+                        fill="none"
+                      >
+                        <polyline points="9 6 15 12 9 18" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex justify-end">
+                <button className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-slate-700 hover:text-slate-900">
+                  View Floorplans
+                  <span className="inline-flex">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      strokeWidth="1.5"
+                      stroke="currentColor"
+                      fill="none"
+                    >
+                      <polyline points="9 6 15 12 9 18" />
+                    </svg>
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Amenities Row */}
+        <section className="relative border-b border-slate-200 bg-slate-50">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-fixed"
+            style={{
+              backgroundImage:
+                "url('/images/the-bella-downtown-bonita-springs-fl-pool.jpg')",
+            }}
+          />
+          <div className="sm:px-6 lg:px-8 max-w-7xl mx-auto py-32 px-4 relative">
+            <div className="max-w-2xl bg-white/90 border border-white/70 rounded-3xl p-6 sm:p-8 shadow-sm">
+              <p className="text-[11px] font-medium tracking-[0.22em] uppercase text-[#5b7a99]">
+                Amenities
+              </p>
+              <h2 className="sm:text-3xl text-2xl font-light text-slate-900 tracking-normal font-playfair mt-3">
+                Resort-style amenities
+              </h2>
+              <p className="text-sm text-slate-600 max-w-xl mt-3">
+                Covered garage parking, stylish and quiet concrete walls and floors! Amazing luxury
+                boutique elevator building, pool, fitness center, and much more.
+              </p>
+              <div className="flex flex-wrap gap-3 mt-6 items-center">
+                <button className="inline-flex items-center justify-center rounded-full bg-slate-900 text-white px-4 py-2 text-[11px] font-medium tracking-[0.2em] uppercase hover:bg-slate-800">
+                  Explore Amenities
+                </button>
+                <p className="text-xs font-black text-slate-600">🐕 WE'RE PET FRIENDLY!</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Bonita Springs / Blog Row */}
+        <section className="border-b border-slate-200 bg-white">
+          <div className="sm:px-6 lg:px-8 max-w-6xl mx-auto py-14 px-4">
+            <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-8 gap-6">
+              <div>
+                <p className="text-[11px] uppercase font-medium text-[#5b7a99] tracking-[0.22em]">
+                  Location, Location, Location
+                </p>
+                <h2 className="sm:text-3xl text-2xl font-thin text-slate-900 tracking-normal font-playfair mt-2">
+                  From the Heart of Bonita Springs.
+                </h2>
+                <p className="text-sm text-slate-600 max-w-xl mt-3">
+                  If you've spent time in Florida, you've noticed how rare true downtowns are—the
+                  kind you might have grown up with. Bonita Springs is one of Southwest Florida's
+                  hidden gems: an authentic downtown with character, charm, and community. Great
+                  restaurants, local shops, and weekend festivals are all within walking distance.
+                  It's the kind of place where you find friends and know your neighbors. It's not
+                  just convenient—it's the Florida lifestyle you've been looking for, with that
+                  small-town feel that's nearly impossible to find anymore.
+                </p>
+              </div>
+              <div>
+                <button className="inline-flex items-center justify-center rounded-full border border-slate-300 px-4 py-2 text-[11px] font-medium tracking-[0.2em] uppercase text-slate-700 hover:border-slate-400 hover:text-slate-900 bg-white">
+                  Read Our Blog
+                </button>
+              </div>
+            </div>
+
+            {/* 4-across blog grid */}
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {/* Article 1 */}
+              <article className="border border-slate-200 rounded-2xl bg-white overflow-hidden">
+                <div className="h-32 bg-slate-100">
+                  <img
+                    src="/images/bonita-overhead.jpg"
+                    alt="Overhead view of Bonita Springs"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-slate-500">
+                    Local Guide
+                  </p>
+                  <h3 className="mt-1 text-sm font-semibold tracking-tight text-slate-900 font-playfair">
+                    A weekend walking tour of downtown Bonita Springs.
+                  </h3>
+                  <p className="mt-2 text-xs text-slate-600">
+                    Cafés, galleries, and waterfront stops all within minutes of Bella.
+                  </p>
+                </div>
+              </article>
+              {/* Article 2 */}
+              <article className="border border-slate-200 rounded-2xl bg-white overflow-hidden">
+                <div className="h-32 bg-slate-100">
+                  <img
+                    src="/images/bonita-coffee.jpg"
+                    alt="Coffee shop in Bonita Springs"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-slate-500">
+                    Lifestyle
+                  </p>
+                  <h3 className="mt-1 text-sm font-semibold tracking-tight text-slate-900 font-playfair">
+                    Sunset rituals at the river and nearby beaches.
+                  </h3>
+                  <p className="mt-2 text-xs text-slate-600">
+                    The best golden-hour spots just a short drive or bike ride away.
+                  </p>
+                </div>
+              </article>
+              {/* Article 3 */}
+              <article className="border border-slate-200 rounded-2xl bg-white overflow-hidden">
+                <div className="h-32 bg-slate-100">
+                  <img
+                    src="/images/wugarshack 2.webp"
+                    alt="Dining in Bonita Springs"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-slate-500">
+                    Dining
+                  </p>
+                  <h3 className="mt-1 text-sm font-semibold tracking-tight text-slate-900 font-playfair">
+                    Five restaurants within five minutes of home.
+                  </h3>
+                  <p className="mt-2 text-xs text-slate-600">
+                    From fresh seafood to hidden neighborhood gems.
+                  </p>
+                </div>
+              </article>
+              {/* Article 4 */}
+              <article className="border border-slate-200 rounded-2xl bg-white overflow-hidden">
+                <div className="h-32 bg-slate-100">
+                  <img
+                    src="/images/bonita-bohemian.jpg"
+                    alt="Bohemian style in Bonita Springs"
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <p className="text-[11px] font-medium tracking-[0.16em] uppercase text-slate-500">
+                    Community
+                  </p>
+                  <h3 className="mt-1 text-sm font-semibold tracking-tight text-slate-900 font-playfair">
+                    Seasonal events and happenings at Bella.
+                  </h3>
+                  <p className="mt-2 text-xs text-slate-600">
+                    Resident gatherings, poolside movies, and neighborhood spotlights.
+                  </p>
+                </div>
+              </article>
+            </div>
+
+            <div className="flex mt-8 justify-center">
+              <button className="inline-flex items-center gap-2 text-[11px] font-medium tracking-[0.2em] uppercase text-slate-700 hover:text-slate-900">
+                Read Our Blog
+                <span className="inline-flex">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    strokeWidth="1.5"
+                    stroke="currentColor"
+                    fill="none"
+                  >
+                    <polyline points="9 6 15 12 9 18" />
+                  </svg>
+                </span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        {/* Map Row */}
+        <section className="border-b border-slate-200 bg-slate-50">
+          <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-6">
+              <div>
+                <p className="text-[11px] uppercase font-medium text-[#5b7a99] tracking-[0.22em]">
+                  Location, Location, Location
+                </p>
+                <h2 className="sm:text-3xl text-2xl font-light text-slate-900 tracking-normal font-playfair mt-2">
+                  In the center of downtown Bonita Springs.
+                </h2>
+                <p className="mt-3 text-sm text-slate-600 max-w-xl">
+                  Walkable to the best of Bonita Springs and minutes to the beaches, Bella
+                  Apartments places you at the intersection of culture, convenience, and coastal
+                  calm.
+                </p>
+              </div>
+            </div>
+
+            <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white h-[320px] sm:h-[380px]">
+              {/* Map image */}
+              <img 
+                src="/images/bonita-overhead.jpg" 
+                alt="Downtown Bonita Springs aerial view"
+                className="w-full h-full object-cover"
+              />
+
+              {/* Marker overlay */}
+              <div className="absolute inset-0 pointer-events-none">
+                <div className="absolute left-1/2 top-1/2 -translate-x-8 -translate-y-6">
+                  <div className="flex items-center gap-2 bg-white/95 px-3 py-2 rounded-full border border-slate-200 shadow-sm">
+                    <div className="h-7 w-7 rounded-full bg-sky-500 flex items-center justify-center text-[10px] font-semibold text-white tracking-tight">
+                      B
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs font-semibold tracking-tight text-slate-900">
+                        Bella Apartments
+                      </span>
+                      <span className="text-[10px] text-slate-500">Downtown Bonita Springs</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
+
+      {/* Footer */}
+      <footer className="bg-white border-t border-slate-200">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+            {/* Logo */}
+            <div className="flex gap-x-2 items-center">
+              <div className="h-8">
+                <img
+                  src="/images/bella-logo-final.png"
+                  alt="Bella Apartments logo"
+                  className="h-8 w-auto"
+                />
+              </div>
+            </div>
+
+            {/* Footer Nav */}
+            <nav className="flex flex-wrap items-center gap-5 text-[11px] font-normal tracking-[0.18em] uppercase">
+              <Link href="/" className="text-slate-700 hover:text-[#5b7a99]">
+                Home
+              </Link>
+              <Link href="/floorplans" className="text-slate-500 hover:text-[#5b7a99]">
+                Apartments
+              </Link>
+              <Link href="/amenities" className="text-slate-500 hover:text-[#5b7a99]">
+                Amenities
+              </Link>
+              <Link href="/gallery" className="text-slate-500 hover:text-[#5b7a99]">
+                Gallery
+              </Link>
+              <Link href="/blog" className="text-slate-500 hover:text-[#5b7a99]">
+                Bonita Springs
+              </Link>
+              <button className="px-4 py-2 rounded-full bg-[#5b7a99] text-white font-medium hover:bg-[#4a6580]">
+                Book a Showing
+              </button>
+            </nav>
+          </div>
+
+          <div className="mt-6 pt-4 border-t border-slate-200 flex flex-col md:flex-row gap-3 md:items-center md:justify-between">
+            <p className="text-[11px] text-slate-500">
+              © {currentYear} Bella Apartments. All rights reserved.
+            </p>
+            <div className="flex gap-4 text-[11px] text-slate-500">
+              <span>Privacy</span>
+              <span>Terms</span>
+              <span>Fair Housing</span>
+            </div>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

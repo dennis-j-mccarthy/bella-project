@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>Gallery – Bella Apartments Bonita Springs</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&amp;family=Plus+Jakarta+Sans:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<!-- Lucide Icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+body { font-family: 'Plus Jakarta Sans', sans-serif; }
+.font-serif { font-family: 'Playfair Display', serif; }
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+/* Fade transition for lightbox */
+.lightbox-enter { opacity: 0; pointer-events: none; }
+.lightbox-active { opacity: 1; pointer-events: auto; }
+/* Smooth fade for gallery items */
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(10px); }
+to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+animation: fadeIn 0.5s ease-out forwards;
+}
+</style></head>
+<body class="bg-slate-50 text-slate-900 antialiased selection:bg-slate-200 selection:text-slate-900 relative">
+    <div class="min-h-screen bg-slate-50 text-slate-900 flex flex-col">
+      <!-- Header -->
+      <header class="bg-white/80 backdrop-blur-md border-slate-200 border-b sticky top-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex h-14 items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+              <a href="#" class="flex items-center gap-2 group">
+                <img src="https://cdn.prod.website-files.com/690d5018eecf3104c1506dd8/690d50660cae49e13e28b56a_bella-logo-p-800.png" alt="Bella Apartments logo" class="w-auto h-7 opacity-90 group-hover:opacity-100 transition-opacity">
+              </a>
+            </div>
+
+            <!-- Nav -->
+            <nav class="hidden md:flex gap-8 items-center">
+              <a class="text-xs font-medium tracking-widest text-slate-500 hover:text-slate-900 uppercase cursor-pointer transition-colors">
+                Home
+              </a>
+              <a class="text-xs font-medium tracking-widest text-slate-500 hover:text-slate-900 uppercase cursor-pointer transition-colors">
+                About
+              </a>
+              <a class="text-xs font-medium tracking-widest text-slate-500 hover:text-slate-900 uppercase cursor-pointer transition-colors">
+                Apartments
+              </a>
+              <a class="text-xs font-semibold tracking-widest text-slate-900 border-b border-slate-900 pb-0.5 uppercase cursor-pointer">
+                Gallery
+              </a>
+              <a class="text-xs font-medium tracking-widest text-slate-500 hover:text-slate-900 uppercase cursor-pointer transition-colors">
+                Location
+              </a>
+              <button class="text-xs font-semibold tracking-widest uppercase px-5 py-2.5 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-all shadow-sm hover:shadow-md">
+                Book a Showing
+              </button>
+            </nav>
+
+            <!-- Mobile menu button -->
+            <button class="md:hidden inline-flex items-center justify-center rounded-full border border-slate-200 p-2 text-slate-600 bg-white hover:bg-slate-50 transition-colors">
+              <i data-lucide="menu" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-grow">
+        
+        <!-- Page Title & Filters -->
+        <section class="bg-white pt-20 pb-8 border-b border-slate-100">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+             <p class="text-xs uppercase font-medium text-slate-500 tracking-widest mb-4">Visualizing Life at Bella</p>
+             <h1 class="text-4xl sm:text-5xl font-normal text-slate-900 tracking-tight font-serif mb-10">Photo Gallery</h1>
+             
+             <!-- Filter Tabs -->
+             <div class="flex flex-wrap justify-center gap-2" id="filter-container">
+                <button class="filter-btn active px-5 py-2 rounded-full bg-slate-900 text-white text-xs font-semibold tracking-widest uppercase shadow-sm transition-all border border-transparent" data-filter="all">All</button>
+                <button class="filter-btn px-5 py-2 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-900 text-xs font-semibold tracking-widest uppercase transition-all" data-filter="interiors">Interiors</button>
+                <button class="filter-btn px-5 py-2 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-900 text-xs font-semibold tracking-widest uppercase transition-all" data-filter="amenities">Amenities</button>
+                <button class="filter-btn px-5 py-2 rounded-full bg-white border border-slate-200 text-slate-600 hover:border-slate-400 hover:text-slate-900 text-xs font-semibold tracking-widest uppercase transition-all" data-filter="exterior">Exterior</button>
+             </div>
+          </div>
+        </section>
+
+        <!-- Main Gallery Grid -->
+        <section class="bg-slate-50 border-b border-slate-200 min-h-[600px]">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            
+            <!-- Grid Layout -->
+            <div id="gallery-grid" class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-[300px]">
+                
+                <!-- Item 1: Large Featured (Living Room) - INTERIORS -->
+                <div class="gallery-item group relative md:col-span-2 md:row-span-2 rounded-2xl overflow-hidden bg-slate-200 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500" data-category="interiors" data-index="0">
+                    <img src="https://ik.imagekit.io/jnwpkntpm/the-bella-downtown-bonita-springs-fl-living-room.png?updatedAt=1763830586425" alt="Spacious Living Room" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/0 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 p-8 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-white font-serif text-2xl mb-1">Modern Living</p>
+                        <p class="text-slate-200 text-sm font-light tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Open concept layouts</p>
+                    </div>
+                </div>
+
+                <!-- Item 2: Tall (2nd Floor Fitness) - AMENITIES -->
+                <div class="gallery-item group relative md:col-span-1 md:row-span-2 rounded-2xl overflow-hidden bg-slate-200 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500" data-category="amenities" data-index="1">
+                    <img src="https://ik.imagekit.io/jnwpkntpm/the-bella-downtown-bonita-springs-fl-2nd-floor-fitness-center.png?updatedAt=1763830585837" alt="Fitness Center" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/0 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-white font-serif text-xl mb-1">Fitness Studio</p>
+                        <p class="text-slate-200 text-sm font-light tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Cardio &amp; Weights</p>
+                    </div>
+                </div>
+
+                <!-- Item 3: Standard (Modern Design Detail) - INTERIORS -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden bg-slate-200 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500" data-category="interiors" data-index="2">
+                    <img src="https://ik.imagekit.io/jnwpkntpm/the-bella-downtown-bonita-springs-fl-modern-design.png?updatedAt=1763830584359" alt="Modern Interior Detail" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+
+                <!-- Item 4: Standard (2BR Kitchen) - INTERIORS -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden bg-slate-200 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500" data-category="interiors" data-index="3">
+                    <img src="https://ik.imagekit.io/jnwpkntpm/the-bella-downtown-bonita-springs-fl-2br-2ba---kitchen.png?updatedAt=1763830585730" alt="Kitchen Detail" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+
+                <!-- Item 5: Wide (Gourmet Kitchen) - INTERIORS -->
+                <div class="gallery-item group relative md:col-span-2 rounded-2xl overflow-hidden bg-slate-200 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500" data-category="interiors" data-index="4">
+                    <img src="https://ik.imagekit.io/jnwpkntpm/the-bella-downtown-bonita-springs-fl-gourmet-kitchen.png?updatedAt=1763830586084" alt="Gourmet Kitchen" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/0 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-white font-serif text-xl mb-1">Gourmet Kitchens</p>
+                        <p class="text-slate-200 text-sm font-light tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Quartz islands &amp; premium finishes</p>
+                    </div>
+                </div>
+
+                <!-- Item 6: Standard (Primary Bedroom) - INTERIORS -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden bg-slate-200 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500" data-category="interiors" data-index="5">
+                    <img src="https://ik.imagekit.io/jnwpkntpm/the-bella-downtown-bonita-springs-fl-primary-bedroom.png?updatedAt=1763830585363" alt="Primary Bedroom" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+
+                <!-- Item 7: Standard (Second Bedroom) - INTERIORS -->
+                <div class="gallery-item group relative rounded-2xl overflow-hidden bg-slate-200 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500" data-category="interiors" data-index="6">
+                    <img src="https://ik.imagekit.io/jnwpkntpm/the-bella-downtown-bonita-springs-fl-second-bedroom.png?updatedAt=1763830585635" alt="Guest Bedroom" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+
+                 <!-- Item 8: Standard (Second Bathroom) - INTERIORS -->
+                 <div class="gallery-item group relative rounded-2xl overflow-hidden bg-slate-200 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500" data-category="interiors" data-index="7">
+                    <img src="https://ik.imagekit.io/jnwpkntpm/the-bella-downtown-bonita-springs-fl-second-bathroom.png?updatedAt=1763830582572" alt="Modern Bathroom" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+                 
+                 <!-- Item 9: Standard (3rd Floor Fitness) - AMENITIES -->
+                 <div class="gallery-item group relative rounded-2xl overflow-hidden bg-slate-200 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500" data-category="amenities" data-index="8">
+                    <img src="https://ik.imagekit.io/jnwpkntpm/the-bella-downtown-bonita-springs-fl-3rd-floor-fitness-center.png?updatedAt=1763830586171" alt="3rd Floor Fitness" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+
+                <!-- HIDDEN ITEMS (LOAD MORE) -->
+
+                <!-- Item 10: Wide - EXTERIOR (Pool Main) -->
+                <div class="gallery-item load-more-item hidden group relative md:col-span-2 rounded-2xl overflow-hidden bg-slate-200 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500" data-category="exterior" data-index="9">
+                    <img src="https://ik.imagekit.io/jnwpkntpm/the-bella-downtown-bonita-springs-fl-pool.png?updatedAt=1763830586826" alt="Resort-Style Pool" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-slate-900/0 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300"></div>
+                    <div class="absolute bottom-0 left-0 p-6 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500">
+                        <p class="text-white font-serif text-xl mb-1">Resort-Style Pool</p>
+                        <p class="text-slate-200 text-sm font-light tracking-wide opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100">Relax and unwind</p>
+                    </div>
+                </div>
+
+                <!-- Item 11: Standard - EXTERIOR (Pool Detail) -->
+                <div class="gallery-item load-more-item hidden group relative rounded-2xl overflow-hidden bg-slate-200 cursor-pointer shadow-sm hover:shadow-lg transition-all duration-500" data-category="exterior" data-index="10">
+                    <img src="https://ik.imagekit.io/jnwpkntpm/the-bella-downtown-bonita-springs-fl-pool%20(1)%202.png?updatedAt=1763830586932" alt="Poolside Cabanas" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+                </div>
+
+            </div>
+
+            <!-- No Results Message -->
+            <div id="no-results" class="hidden text-center py-20">
+                <p class="text-slate-400 font-light text-sm">No photos found in this category.</p>
+            </div>
+
+            <div class="mt-12 text-center" id="load-more-container">
+                <p class="text-sm text-slate-500 font-light mb-6" id="count-display">Showing 9 of 11 photos</p>
+                <button id="load-more-btn" class="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase text-slate-900 border-b border-slate-900 pb-1 hover:text-slate-600 hover:border-slate-600 transition-all">
+                    Load More <i data-lucide="arrow-down" class="w-3 h-3"></i>
+                </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Video / Experience Section -->
+        <section class="relative bg-slate-900 text-white overflow-hidden">
+             <!-- Parallax Background -->
+            <div class="absolute inset-0 bg-cover bg-center opacity-40 mix-blend-overlay scale-110" style="background-image:url('https://cdn.prod.website-files.com/690d5018eecf3104c1506dd8/690d5257a95231fc6f345b07_bella-hero.png');"></div>
+            
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32 md:py-40">
+                <div class="max-w-2xl">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-8 h-px bg-white/60"></div>
+                        <p class="text-xs uppercase font-semibold text-white/80 tracking-widest">Virtual Experience</p>
+                    </div>
+                    <h2 class="text-3xl sm:text-5xl font-serif font-normal tracking-tight mb-8 text-white leading-tight">
+                        Immerse yourself in the <br> <span class="text-slate-300 italic">Bella lifestyle.</span>
+                    </h2>
+                    <div class="flex flex-wrap gap-4">
+                        <button class="inline-flex items-center justify-center gap-3 rounded-full bg-white text-slate-900 px-8 py-4 text-xs font-bold tracking-widest uppercase hover:bg-slate-200 transition-all">
+                            <i data-lucide="play-circle" class="w-4 h-4"></i> Watch Video Tour
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="border-b border-slate-200 bg-white">
+          <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+            <h2 class="text-3xl sm:text-4xl font-normal text-slate-900 font-serif mb-4 tracking-tight">Seen enough?</h2>
+            <p class="text-base text-slate-600 font-light mb-10 max-w-lg mx-auto">Our gallery captures the style, but only a visit captures the feeling. Schedule a private tour today.</p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <button class="w-full sm:w-auto inline-flex items-center justify-center rounded-full bg-slate-900 text-white px-8 py-3.5 text-xs font-semibold tracking-widest uppercase hover:bg-slate-800 transition-all shadow-sm transform hover:-translate-y-0.5">
+                Schedule a Tour
+              </button>
+              <button class="w-full sm:w-auto inline-flex items-center justify-center rounded-full border border-slate-200 px-8 py-3.5 text-xs font-semibold tracking-widest uppercase text-slate-600 hover:border-slate-400 hover:text-slate-900 bg-white transition-all">
+                View Availability
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+
+      <!-- Lightbox Modal -->
+      <div id="lightbox" class="fixed inset-0 z-[100] hidden" aria-hidden="true">
+        <!-- Backdrop -->
+        <div class="absolute inset-0 bg-slate-900/95 backdrop-blur-sm transition-opacity opacity-0 duration-300" id="lightbox-backdrop"></div>
+        
+        <!-- Controls & Image -->
+        <div class="relative z-[101] w-full h-full flex items-center justify-center p-4">
+            
+            <!-- Close Button -->
+            <button id="lightbox-close" class="absolute top-6 right-6 text-white/70 hover:text-white transition-colors p-2 rounded-full hover:bg-white/10">
+                <i data-lucide="x" class="w-8 h-8"></i>
+            </button>
+
+            <!-- Previous Button -->
+            <button id="lightbox-prev" class="absolute left-4 md:left-8 text-white/70 hover:text-white transition-colors p-3 rounded-full hover:bg-white/10 focus:outline-none">
+                <i data-lucide="chevron-left" class="w-8 h-8"></i>
+            </button>
+
+            <!-- Image Container -->
+            <div class="relative max-w-[90vw] max-h-[85vh] transition-transform duration-300 scale-95 opacity-0" id="lightbox-content">
+                <img id="lightbox-img" src="" alt="Gallery Preview" class="max-w-full max-h-[85vh] object-contain rounded shadow-2xl">
+                <!-- Caption -->
+                <div class="absolute -bottom-10 left-0 w-full text-center">
+                    <p id="lightbox-caption" class="text-white/90 text-sm font-light tracking-wide font-serif"></p>
+                </div>
+            </div>
+
+            <!-- Next Button -->
+            <button id="lightbox-next" class="absolute right-4 md:right-8 text-white/70 hover:text-white transition-colors p-3 rounded-full hover:bg-white/10 focus:outline-none">
+                <i data-lucide="chevron-right" class="w-8 h-8"></i>
+            </button>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer class="bg-white border-t border-slate-200 pt-16 pb-12 mt-auto">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-10">
+            <!-- Logo -->
+            <div class="flex gap-x-2 gap-y-8 items-center">
+              <div class="h-8 opacity-90">
+                <img src="https://cdn.prod.website-files.com/690d5018eecf3104c1506dd8/690d50660cae49e13e28b56a_bella-logo-p-800.png" alt="Bella Apartments logo" class="h-8 w-auto">
+              </div>
+            </div>
+
+            <!-- Footer Nav -->
+            <nav class="flex flex-wrap items-center gap-x-8 gap-y-4 text-xs font-medium tracking-widest uppercase">
+              <a class="text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">Home</a>
+              <a class="text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">About</a>
+              <a class="text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">Apartments</a>
+              <a class="text-slate-900 cursor-pointer">Gallery</a>
+              <a class="text-slate-500 hover:text-slate-900 cursor-pointer transition-colors">Location</a>
+              <button class="px-5 py-2.5 rounded-full bg-slate-900 text-white hover:bg-slate-800 transition-colors">
+                Book a Showing
+              </button>
+            </nav>
+          </div>
+
+          <div class="mt-12 pt-8 border-t border-slate-100 flex flex-col md:flex-row gap-6 md:items-center md:justify-between">
+            <p class="text-xs text-slate-400 font-light">
+              © <span id="yearSpan">2025</span> Bella Apartments. All rights reserved.
+            </p>
+            <div class="flex gap-6 text-xs text-slate-400 font-medium">
+              <span class="cursor-pointer hover:text-slate-800 transition-colors">Privacy</span>
+              <span class="cursor-pointer hover:text-slate-800 transition-colors">Terms</span>
+              <span class="cursor-pointer hover:text-slate-800 transition-colors">Fair Housing</span>
+            </div>
+          </div>
+        </div>
+        <script>
+          // Init Icons
+          lucide.createIcons();
+          document.getElementById('yearSpan').textContent = new Date().getFullYear();
+
+          // Data & Selection
+          const galleryGrid = document.getElementById('gallery-grid');
+          const filterBtns = document.querySelectorAll('.filter-btn');
+          const loadMoreBtn = document.getElementById('load-more-btn');
+          const loadMoreContainer = document.getElementById('load-more-container');
+          const countDisplay = document.getElementById('count-display');
+          const noResults = document.getElementById('no-results');
+          
+          let visibleItems = []; // Array of currently visible elements
+          let activeFilter = 'all';
+          let allImagesLoaded = false;
+
+          // Filtering Logic
+          function applyFilter(filter) {
+              activeFilter = filter;
+              let matchCount = 0;
+              let totalVisible = 0;
+
+              const allItems = document.querySelectorAll('.gallery-item');
+              
+              allItems.forEach(item => {
+                  const category = item.getAttribute('data-category');
+                  // Check if item is waiting to be loaded via "Load More"
+                  const isLoadMoreItem = item.classList.contains('load-more-item');
+                  // It is considered "hidden by logic" if it's a load-more item AND we haven't clicked load more yet
+                  // However, if we are filtering, we often want to show everything relevant.
+                  // Strategy: "Load More" only applies to the 'All' view initially. 
+                  // If a user clicks a specific filter, we usually show all matches, including those hidden.
+                  // BUT to keep "Load More" logic consistent, let's say "Load More" reveals the extra items into the DOM.
+                  
+                  // Simple Logic: 
+                  // 1. Is it matching the filter?
+                  // 2. If it matches, is it currently 'available' (not hidden by load more logic)?
+                  
+                  // Let's allow specific filters to reveal ALL items of that category, bypassing 'Load More' to avoid "0 results" confusingly.
+                  // Only 'All' respects the 'Load More' constraint.
+                  
+                  const isMatch = (filter === 'all' || category === filter);
+                  
+                  if (isMatch) {
+                      // If Filter is ALL, respect the 'load-more-item' class (keep hidden if not loaded)
+                      // If Filter is Specific, Show it regardless of 'load-more-item' status (user wants to see amenities, show all amenities)
+                      if (filter === 'all' && isLoadMoreItem) {
+                          item.classList.add('hidden');
+                      } else {
+                          item.classList.remove('hidden');
+                          item.classList.add('animate-fade-in');
+                          matchCount++;
+                      }
+                  } else {
+                      item.classList.add('hidden');
+                  }
+              });
+
+              // Update UI State
+              if (matchCount === 0) {
+                  noResults.classList.remove('hidden');
+              } else {
+                  noResults.classList.add('hidden');
+              }
+
+              // Update Button States
+              filterBtns.forEach(btn => {
+                  if (btn.getAttribute('data-filter') === filter) {
+                      btn.classList.add('bg-slate-900', 'text-white', 'border-transparent');
+                      btn.classList.remove('bg-white', 'text-slate-600', 'border-slate-200');
+                  } else {
+                      btn.classList.remove('bg-slate-900', 'text-white', 'border-transparent');
+                      btn.classList.add('bg-white', 'text-slate-600', 'border-slate-200');
+                  }
+              });
+
+              updateCountText(matchCount);
+              
+              // Hide Load More button if we are filtered (since specific filters reveal all)
+              // Or if we are in ALL and everything is loaded
+              if (filter !== 'all' || allImagesLoaded) {
+                  loadMoreBtn.classList.add('hidden');
+              } else {
+                  loadMoreBtn.classList.remove('hidden');
+              }
+          }
+
+          function updateCountText(visibleCount) {
+             const total = document.querySelectorAll('.gallery-item').length;
+             // If filtered, show "Showing X results"
+             if (activeFilter !== 'all') {
+                 countDisplay.textContent = `Showing ${visibleCount} results`;
+             } else {
+                 // In 'All' mode, calculate total available vs total existing
+                 countDisplay.textContent = `Showing ${visibleCount} of ${total} photos`;
+             }
+          }
+
+          // Event Listeners for Filters
+          filterBtns.forEach(btn => {
+              btn.addEventListener('click', () => {
+                  applyFilter(btn.getAttribute('data-filter'));
+              });
+          });
+
+          // Load More Handler
+          loadMoreBtn.addEventListener('click', () => {
+              // Reveal items marked as load-more
+              const hiddenItems = document.querySelectorAll('.load-more-item');
+              hiddenItems.forEach(item => {
+                  item.classList.remove('load-more-item'); // Remove this marker so they stay visible in 'All'
+                  item.classList.remove('hidden');
+                  item.classList.add('animate-fade-in');
+              });
+              
+              allImagesLoaded = true;
+              loadMoreBtn.classList.add('hidden');
+              updateCountText(document.querySelectorAll('.gallery-item').length);
+          });
+
+          // --- LIGHTBOX LOGIC (Preserved & Updated) ---
+          const lightbox = document.getElementById('lightbox');
+          const backdrop = document.getElementById('lightbox-backdrop');
+          const content = document.getElementById('lightbox-content');
+          const lightboxImg = document.getElementById('lightbox-img');
+          const lightboxCaption = document.getElementById('lightbox-caption');
+          const closeBtn = document.getElementById('lightbox-close');
+          const prevBtn = document.getElementById('lightbox-prev');
+          const nextBtn = document.getElementById('lightbox-next');
+
+          let currentIndex = 0;
+          let visibleGalleryItems = []; // Only navigate through visible items
+
+          function getVisibleItems() {
+              return Array.from(document.querySelectorAll('.gallery-item')).filter(item => !item.classList.contains('hidden'));
+          }
+
+          // Open Lightbox
+          // Use event delegation for dynamic items
+          galleryGrid.addEventListener('click', (e) => {
+              const item = e.target.closest('.gallery-item');
+              if (item) {
+                  visibleGalleryItems = getVisibleItems();
+                  // Find index within visible items
+                  currentIndex = visibleGalleryItems.indexOf(item);
+                  if (currentIndex > -1) {
+                      updateLightboxImage();
+                      openLightbox();
+                  }
+              }
+          });
+
+          function openLightbox() {
+              lightbox.classList.remove('hidden');
+              void lightbox.offsetWidth; // Reflow
+              backdrop.classList.remove('opacity-0');
+              content.classList.remove('opacity-0', 'scale-95');
+              content.classList.add('opacity-100', 'scale-100');
+              document.body.style.overflow = 'hidden';
+          }
+
+          function closeLightbox() {
+              backdrop.classList.add('opacity-0');
+              content.classList.remove('opacity-100', 'scale-100');
+              content.classList.add('opacity-0', 'scale-95');
+              setTimeout(() => {
+                  lightbox.classList.add('hidden');
+                  document.body.style.overflow = '';
+              }, 300);
+          }
+
+          function updateLightboxImage() {
+              const item = visibleGalleryItems[currentIndex];
+              if(!item) return;
+              const img = item.querySelector('img');
+              lightboxImg.src = img.src;
+              lightboxCaption.textContent = img.getAttribute('alt');
+          }
+
+          function showNext() {
+              currentIndex = (currentIndex + 1) % visibleGalleryItems.length;
+              updateLightboxImage();
+          }
+
+          function showPrev() {
+              currentIndex = (currentIndex - 1 + visibleGalleryItems.length) % visibleGalleryItems.length;
+              updateLightboxImage();
+          }
+
+          closeBtn.addEventListener('click', closeLightbox);
+          nextBtn.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
+          prevBtn.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+          
+          lightbox.addEventListener('click', (e) => {
+              if (e.target === lightbox || e.target === backdrop) closeLightbox();
+          });
+
+          document.addEventListener('keydown', (e) => {
+              if (lightbox.classList.contains('hidden')) return;
+              if (e.key === 'Escape') closeLightbox();
+              if (e.key === 'ArrowRight') showNext();
+              if (e.key === 'ArrowLeft') showPrev();
+          });
+
+        </script>
+      </footer>
+    </div>
+
+</body></html>
